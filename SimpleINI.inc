@@ -139,7 +139,7 @@ stock file_Open(filename[])
 		if(delim != -1)
 		{
 			__strcpy(ini_KeyData[i], ini_Temp, delim + 1);
-			__strcpy(ini_ValData[i], ini_Temp[delim + 1], MAX_VAL_LENGTH);
+			__strcpy(ini_ValData[i], ini_Temp[delim + 2], MAX_VAL_LENGTH);
 
 			if(ini_KeyData[i][delim - 1] == ' ')
 				strdel(ini_KeyData[i], delim - 1, delim);
@@ -196,7 +196,7 @@ stock file_Save(filename[])
 		}
 		else
 		{
-			format(ini_Temp, MAX_RECORD_LENGTH, "%s = %s\n", ini_KeyData[i], ini_ValData[i]);
+			format(ini_Temp, MAX_RECORD_LENGTH, "%s = %s\r\n", ini_KeyData[i], ini_ValData[i]);
 		}
 
 		fwrite(ini_CurrentFile, ini_Temp);
